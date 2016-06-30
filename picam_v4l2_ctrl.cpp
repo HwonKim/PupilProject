@@ -137,6 +137,7 @@ void Picam::init_device(void)
 		}
 	}
 
+	set_fps(60);
 	init_mmap();
 }
 
@@ -320,4 +321,13 @@ void Picam::close_device(void)
 }
 
 
+void Picam::set_fps(int fps){
+	struct v4l2_streamparm streamparm;
+	CLEAR(streamparm);
+	streamparm.type = V4L2_BUF_TYPE_VIDEO_CAPTURE;
+	streamparm.parm.capture.timeperframe.numerator = 1;
+	streamparm.parm.capture.timeperframe.denominator = fps; 
+	if(xioctl(fd, VIDIOC_S_PARM, &streamparm))
+		throw runtime_error("VIDIOC_S_PARM");
+}
 

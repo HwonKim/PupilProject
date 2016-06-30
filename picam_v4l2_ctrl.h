@@ -28,7 +28,7 @@ private:
 	
 	bool read_frame();
 	void process_image(void *p, int size);
-	void set_fps();
+	void set_fps(int fps);
 
 	// variable //
 	std::string	device;

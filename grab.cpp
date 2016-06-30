@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
 	Picam picam("/dev/video0", XRES, YRES);
 
-	picam.mainloop(1, 30);
+	picam.mainloop(1, 60);
 
 	return 0;
 }
