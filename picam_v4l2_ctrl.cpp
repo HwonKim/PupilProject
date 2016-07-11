@@ -41,7 +41,6 @@ Picam::Picam(const string& device, int width, int height) :
 	frame_number = 0;
 	open_device();
 	init_device();
-	start_capturing();
 }
 
 Picam::~Picam()
@@ -212,6 +211,7 @@ void Picam::start_capturing(void)
 
 const void Picam::mainloop(int timeout, int count)
 {
+	start_capturing();
 	while(count-- > 0){
 		for(;;){
 			fd_set fds;
